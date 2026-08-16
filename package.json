@@ -1,0 +1,24 @@
+{
+  "name": "producthunt-qa",
+  "version": "1.0.0",
+  "description": "QA automation suite for Product Hunt: Playwright E2E + GraphQL API tests on Bun",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "all": "bun run scripts/run-all.ts",
+    "test:api": "bun test tests/api",
+    "test:e2e": "node node_modules/@playwright/test/cli.js test",
+    "test:e2e:headless": "bun run scripts/run-e2e-headless.ts",
+    "test:e2e:ui": "node node_modules/@playwright/test/cli.js test --ui",
+    "test": "bun run test:api && bun run test:e2e",
+    "report": "bun run scripts/build-report.ts --open",
+    "report:e2e": "node node_modules/@playwright/test/cli.js show-report",
+    "browsers": "node node_modules/@playwright/test/cli.js install --with-deps chromium chrome",
+    "typecheck": "node node_modules/typescript/bin/tsc --noEmit"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/bun": "^1.3.0",
+    "typescript": "^5.9.0"
+  }
+}
